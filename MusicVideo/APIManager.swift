@@ -28,7 +28,7 @@ class APIManager {
             } else {
                 print(data)
                 do {
-                    if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? [String: AnyObject] {
+                    if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? JSONDictionary {
                         print(json)
                         let priority = DISPATCH_QUEUE_PRIORITY_HIGH
                         dispatch_async(dispatch_get_global_queue(priority, 0)) {
@@ -36,7 +36,6 @@ class APIManager {
                                 completion(result: "JSONSerialization successful")
                             }
                         }
-                        
                     }
                 } catch {
                     dispatch_async(dispatch_get_main_queue()) {
@@ -46,21 +45,6 @@ class APIManager {
             }
             
         }
-        
-        /**
-        let task = session.dataTaskWithURL(url) {
-            (data, response, error) -> Void in
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                if error != nil {
-                    completion(result: (error!.localizedDescription))
-                } else {
-                    completion(result: "NSURLSession successful")
-                    print(data)
-                }
-            }
-        }
-                **/
         task.resume()
  
     }
