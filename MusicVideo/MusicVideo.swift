@@ -21,6 +21,8 @@ class Videos {
     private var _vLinkToiTunes:String
     private var _vReleaseDate:String
     
+    var vImageData: NSData?
+    
     var vName:String {
         return _vName
     }
