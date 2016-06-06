@@ -9,30 +9,28 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var videos = [Videos]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let api = APIManager()
         api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=10/json", completion: didLoadData)
-        /**api.loadData("https://itunes.apple.com/us/rss/topmusicvideos/limit=10/json") {
-            (result:String) in
-            print(result)
-        }**/
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    func didLoadData(result:String) {
-        let alert = UIAlertController(title: (result), message: nil, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "Ok", style: .Default) { action -> Void in
+    func didLoadData(videos: [Videos]) {
         
+        self.videos = videos
+
+        
+        for(index, item) in videos.enumerate() {
+            print("[\(index)] name=\(item.vName)")
         }
-        alert.addAction(okAction)
-        self.presentViewController(alert, animated: true, completion: nil)
     }
 
 }
