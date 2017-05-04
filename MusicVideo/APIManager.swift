@@ -10,15 +10,15 @@ import Foundation
 
 class APIManager {
     
-    func loadData(urlString: String, completion: [Videos] -> Void) {
+    func loadData(_ urlString: String, completion: @escaping ([Videos]) -> Void) {
         
-        let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
-        let session = NSURLSession(configuration: config)
+        let config = URLSessionConfiguration.ephemeral
+        let session = URLSession(configuration: config)
         
         //let session = NSURLSession.sharedSession()
-        let url = NSURL(string: urlString)!
+        let url = URL(string: urlString)!
         
-        let task = session.dataTaskWithURL(url) {
+        let task = session.dataTask(with: url, completionHandler: {
             (data, response, error) -> Void in
             
             if error != nil {
@@ -28,18 +28,18 @@ class APIManager {
                 }**/
             } else {
                 do {
-                    if let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? JSONDictionary,
-                        feed = json["feed"] as? JSONDictionary,
-                        entries = feed["entry"] as? JSONArray {
+                    if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? JSONDictionary,
+                        let feed = json["feed"] as? JSONDictionary,
+                        let entries = feed["entry"] as? JSONArray {
                             var videos = [Videos]()
                         for entry in entries {
                             let entry = Videos(data: entry as! JSONDictionary)
                            
                             videos.append(entry)
                         }
-                        let priority = DISPATCH_QUEUE_PRIORITY_HIGH
-                        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                            dispatch_async(dispatch_get_main_queue()) {
+                        let priority = DispatchQueue.GlobalQueuePriority.high
+                        DispatchQueue.global(priority: priority).async {
+                            DispatchQueue.main.async {
                                 completion(videos)
                             }
                         }
@@ -49,7 +49,7 @@ class APIManager {
                 }
             }
             
-        }
+        }) 
         task.resume()
  
     }

@@ -23,12 +23,12 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    func didLoadData(videos: [Videos]) {
+    func didLoadData(_ videos: [Videos]) {
         print(reachabilityStatus)
         self.videos = videos
 
         
-        for(index, item) in videos.enumerate() {
+        for(index, item) in videos.enumerated() {
             print("[\(index)] name=\(item.vName)")
         }
     }
