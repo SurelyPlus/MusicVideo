@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E13B15F61EBB2220003B4680 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13B15F51EBB2220003B4680 /* ViewController2.swift */; };
 		E176D6731D035CE4000AFB4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176D6721D035CE4000AFB4B /* AppDelegate.swift */; };
 		E176D6751D035CE4000AFB4B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176D6741D035CE4000AFB4B /* ViewController.swift */; };
 		E176D6781D035CE4000AFB4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E176D6761D035CE4000AFB4B /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E13B15F51EBB2220003B4680 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		E176D66F1D035CE4000AFB4B /* MusicVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E176D6721D035CE4000AFB4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E176D6741D035CE4000AFB4B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				E176D6741D035CE4000AFB4B /* ViewController.swift */,
+				E13B15F51EBB2220003B4680 /* ViewController2.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E13B15F61EBB2220003B4680 /* ViewController2.swift in Sources */,
 				E176D6A51D043626000AFB4B /* APIManager.swift in Sources */,
 				E176D6751D035CE4000AFB4B /* ViewController.swift in Sources */,
 				E176D6AA1D04569F000AFB4B /* MusicVideo.swift in Sources */,
